@@ -1,0 +1,15 @@
+
+services:
+  azure.cosmosdb:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    container_name: azure.cosmosdb
+    environment:
+      - AZURE_COSMOS_EMULATOR_PARTITION_COUNT=5 
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+      - AZURE_COSMOS_EMULATOR_IP_ADDRESS_OVERRIDE=  10.162.136.53 # there were 3 different ones since this is a docker container, on an OSU windows virtual machine, on my laptop. and this one didn't crash immediately like the others so it must be the correct one
+    ports:
+      - 8081:8081 
+      - 10251:10251 
+      - 10252:10252 
+      - 10253:10253 
+      - 10254:10254
